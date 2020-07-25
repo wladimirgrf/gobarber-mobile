@@ -41,37 +41,40 @@ const SignUp: React.FunctionComponent = () => {
   const emailInputRef = useRef<TextInput>(null);
   const passwordlInputRef = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSignUp = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Name is required.'),
-        email: Yup.string()
-          .required('E-mail is required.')
-          .email('Please enter a valid email address.'),
-        password: Yup.string().min(6, 'Minimum of 6 characters.'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Name is required.'),
+          email: Yup.string()
+            .required('E-mail is required.')
+            .email('Please enter a valid email address.'),
+          password: Yup.string().min(6, 'Minimum of 6 characters.'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      await api.post('/users', data);
+        await api.post('/users', data);
 
-      Alert.alert('Thanks!', 'Your account has been successfully created.');
+        Alert.alert('Thanks!', 'Your account has been successfully created.');
 
-      navigation.goBack();
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        formRef.current?.setErrors(errors);
-        return;
+        navigation.goBack();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+          return;
+        }
+
+        Alert.alert('Sign Up failed!', 'Please, try again later.');
       }
-
-      Alert.alert('Sign Up failed!', 'Please, try again later.');
-    }
-  }, []);
+    },
+    [navigation],
+  );
 
   return (
     <>
