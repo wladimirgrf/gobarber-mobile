@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
@@ -14,10 +15,17 @@ import {
   ProfileButton,
   UserAvatar,
   ProvidersList,
+  ProvidersListTitle,
+  ProviderContainer,
+  ProviderAvatar,
+  ProviderInfo,
+  ProviderName,
+  ProviderMeta,
+  ProviderMetaText,
 } from './styles';
 
 const Dashboard: React.FunctionComponent = () => {
-  // const { navigate } = useNavigation();
+  const { navigate } = useNavigation();
   const { user, signOut } = useAuth();
 
   const [providers, setProviders] = useState<Provider[]>([]);
@@ -26,6 +34,13 @@ const Dashboard: React.FunctionComponent = () => {
     // navigate('Profile');
     signOut();
   }, [signOut]);
+
+  const navigateToCreateAppointment = useCallback(
+    (providerId: string) => {
+      navigate('CreateAppointment', { providerId });
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     api.get('/providers').then(response => {
@@ -51,7 +66,27 @@ const Dashboard: React.FunctionComponent = () => {
       <ProvidersList
         data={providers}
         keyExtractor={provider => provider.id}
-        renderItem={({ item }) => <UserName>{item.name}</UserName>}
+        ListHeaderComponent={<ProvidersListTitle>Barber</ProvidersListTitle>}
+        renderItem={({ item: provider }) => (
+          <ProviderContainer
+            onPress={() => navigateToCreateAppointment(provider.id)}
+          >
+            <ProviderAvatar source={{ uri: provider.avatarUrl }} />
+            <ProviderInfo>
+              <ProviderName>{provider.name}</ProviderName>
+
+              <ProviderMeta>
+                <Icon name="calendar" color="#ff9000" />
+                <ProviderMetaText>Monday to Friday</ProviderMetaText>
+              </ProviderMeta>
+
+              <ProviderMeta>
+                <Icon name="clock" color="#ff9000" />
+                <ProviderMetaText>from 8:00 to 18:00</ProviderMetaText>
+              </ProviderMeta>
+            </ProviderInfo>
+          </ProviderContainer>
+        )}
       />
     </Container>
   );
