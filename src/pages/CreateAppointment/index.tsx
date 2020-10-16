@@ -111,7 +111,7 @@ const CreateAppointment: React.FunctionComponent = () => {
           <DateTimePicker
             mode="date"
             display="spinner"
-            textColor="#f4ede8"
+            textColor="white"
             value={selectedDate}
             onChange={handleDateChanged}
           />
