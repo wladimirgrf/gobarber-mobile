@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 
-import { RouteParams, Provider } from './types';
+import { RouteParams, Provider, AvailabilityItem } from './types';
 import {
   Container,
   Header,
@@ -28,13 +28,13 @@ import {
 const CreateAppointment: React.FunctionComponent = () => {
   const { goBack } = useNavigation();
   const { user } = useAuth();
-
   const { params } = useRoute();
   const routeParams = params as RouteParams;
   const todayDate = new Date();
 
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(todayDate);
+  const [availability, setAvailability] = useState<AvailabilityItem[]>([]);
   const [providers, setProviders] = useState<Provider[]>([]);
   const [selectedProvider, setSelectedProvider] = useState(
     routeParams.providerId,
@@ -67,6 +67,20 @@ const CreateAppointment: React.FunctionComponent = () => {
       setProviders(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    api
+      .get(`/providers/${selectedProvider}/day-availability`, {
+        params: {
+          day: selectedDate.getDate(),
+          month: selectedDate.getMonth() + 1,
+          year: selectedDate.getFullYear(),
+        },
+      })
+      .then(response => {
+        setAvailability(response.data);
+      });
+  }, [selectedDate, selectedProvider]);
 
   return (
     <Container>
@@ -111,7 +125,7 @@ const CreateAppointment: React.FunctionComponent = () => {
           <DateTimePicker
             mode="date"
             display="spinner"
-            textColor="white"
+            textColor="#f4ede8"
             value={selectedDate}
             onChange={handleDateChanged}
           />
