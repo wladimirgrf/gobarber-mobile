@@ -26,14 +26,13 @@ import {
 
 const Dashboard: React.FunctionComponent = () => {
   const { navigate } = useNavigation();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   const [providers, setProviders] = useState<Provider[]>([]);
 
   const navigateToProfile = useCallback(() => {
-    // navigate('Profile');
-    signOut();
-  }, [signOut]);
+    navigate('Profile');
+  }, [navigate]);
 
   const navigateToCreateAppointment = useCallback(
     (providerId: string) => {
