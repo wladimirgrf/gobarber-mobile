@@ -6,26 +6,13 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
-import { TextInputProps } from 'react-native';
 import { useField } from '@unform/core';
 
+import { InputRef, InputProps, InputValueReference } from './types';
 import { Container, TextInput, Icon } from './styles';
 
-interface InputProps extends TextInputProps {
-  name: string;
-  icon: string;
-}
-
-interface InputValueReference {
-  value: string;
-}
-
-interface InputRef {
-  focus(): void;
-}
-
 const Input: React.RefForwardingComponent<InputRef, InputProps> = (
-  { name, icon, ...rest },
+  { name, icon, containerStyle = {}, ...rest },
   ref,
 ) => {
   const inputElementRef = useRef<any>(null);
@@ -46,12 +33,6 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
     setIsFilled(!!inputValueRef.current.value);
   }, []);
 
-  useImperativeHandle(ref, () => ({
-    focus() {
-      inputElementRef.current.focus();
-    },
-  }));
-
   useEffect(() => {
     registerField<string>({
       name: fieldName,
@@ -68,8 +49,14 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
     });
   }, [fieldName, registerField]);
 
+  useImperativeHandle(ref, () => ({
+    focus() {
+      inputElementRef.current.focus();
+    },
+  }));
+
   return (
-    <Container isFocused={isFocused} isErrored={!!error}>
+    <Container style={containerStyle} isFocused={isFocused} isErrored={!!error}>
       <Icon
         name={icon}
         size={20}
