@@ -8,9 +8,10 @@ import {
   Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
+import { FormHandles } from '@unform/core';
 import Icon from 'react-native-vector-icons/Feather';
+import ImagePicker from 'react-native-image-picker';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -44,7 +45,38 @@ const Profile: React.FunctionComponent = () => {
     navigation.goBack();
   }, [navigation]);
 
-  const handleProfileUpdate = useCallback(
+  const handleUpdateAvatar = useCallback(() => {
+    ImagePicker.showImagePicker(
+      {
+        cancelButtonTitle: 'Cancel',
+        takePhotoButtonTitle: 'Take Photo',
+        chooseFromLibraryButtonTitle: 'Choose Photo',
+      },
+      response => {
+        if (response.didCancel) {
+          return;
+        }
+        if (response.error) {
+          Alert.alert('Avatar update failed');
+          return;
+        }
+
+        const data = new FormData();
+
+        data.append('avatar', {
+          uri: response.uri,
+          type: 'image/jpeg',
+          name: `${user.id}.jpg`,
+        });
+
+        api.patch('/users/avatar', data).then(apiResponse => {
+          updateUser(apiResponse.data);
+        });
+      },
+    );
+  }, [user.id, updateUser]);
+
+  const handleUpdateProfile = useCallback(
     async (data: ProfileFormData) => {
       try {
         formRef.current?.setErrors({});
@@ -129,7 +161,7 @@ const Profile: React.FunctionComponent = () => {
               <Icon name="chevron-left" size={24} color="#999591" />
             </BackButton>
 
-            <UserAvatarButton onPress={() => {}}>
+            <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatarUrl }} />
             </UserAvatarButton>
 
@@ -140,7 +172,7 @@ const Profile: React.FunctionComponent = () => {
             <Form
               initialData={user}
               ref={formRef}
-              onSubmit={handleProfileUpdate}
+              onSubmit={handleUpdateProfile}
             >
               <Input
                 name="name"
