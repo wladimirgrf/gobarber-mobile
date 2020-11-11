@@ -108,6 +108,7 @@ const SignIn: React.FunctionComponent = () => {
                 autoCapitalize="none"
                 keyboardType="email-address"
                 returnKeyType="next"
+                testID="input-email"
                 onSubmitEditing={() => {
                   passwordInputRef.current?.focus();
                 }}
@@ -119,6 +120,7 @@ const SignIn: React.FunctionComponent = () => {
                 ref={passwordInputRef}
                 secureTextEntry
                 returnKeyType="send"
+                testID="input-password"
                 onSubmitEditing={() => {
                   formRef.current?.submitForm();
                 }}
