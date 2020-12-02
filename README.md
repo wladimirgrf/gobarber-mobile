@@ -22,7 +22,7 @@
 
 ## 🌍 Ecosystem
 
-Below the technologies, used to build this Web System:
+Below the technologies, used to build this Mobile App:
 
 |                      Name                                   |                         Status                          |
 |:-----------------------------------------------------------:|:-------------------------------------------------------:|
