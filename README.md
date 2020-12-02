@@ -38,8 +38,7 @@ Below the technologies, used to build this Web System:
 
 ## 💻 Getting started
 
-Set up your development environment. </br>
-<a href="https://react-native.rocketseat.dev">Here the guide</a>
+Set up your development environment: <a href="https://react-native.rocketseat.dev">Guide</a>
 
 ### Requirements
 
@@ -58,13 +57,13 @@ $ git clone https://github.com/wladimirgrf/gobarber-mobile.git && cd gobarber-mo
 $ yarn
 ```
 
-- To emulate with Android
+To emulate with Android
 ```bash
 # Make sure the emulator is already started
 $ yarn android
 ```
 
-- To emulate with IOS
+To emulate with IOS
 ```bash
 # IOS dependencies
 $ cd ios
