@@ -43,7 +43,6 @@ Set up your development environment. </br>
 
 ### Requirements
 
-- 
 - Must have the [GoBarber API](https://github.com/wladimirgrf/gobarber-api) running.
 
 **Clone the project and access the folder**
