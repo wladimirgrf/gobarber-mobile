@@ -40,6 +40,7 @@ Below the technologies, used to build this Web System:
 
 ### Requirements
 
+- <a href="https://react-native.rocketseat.dev">Set up your development environment.</a>
 - Must have the [GoBarber API](https://github.com/wladimirgrf/gobarber-api) running.
 
 **Clone the project and access the folder**
@@ -50,12 +51,25 @@ $ git clone https://github.com/wladimirgrf/gobarber-mobile.git && cd gobarber-mo
 
 **Follow the steps below**
 
+- Install the dependencies
 ```bash
-# Install the dependencies
 $ yarn
+```
 
-# Start the client
-$ yarn start
+- To emulate with Android
+```
+# Make sure the emulator is already started
+$ yarn android
+```
+
+- To emulate with IOS
+```
+# Install native IOS dependencies
+$ cd ios
+$ pod install
+
+# Start the APP
+$ yarn ios
 ```
 
 ## 🤝 Contributing
