@@ -28,9 +28,9 @@ Below the technologies, used to build this Web System:
 |:-----------------------------------------------------------:|:-------------------------------------------------------:|
 |<img height="50" src=".github/assets/react_native.svg"> | <img alt="react_native version" src="https://img.shields.io/badge/react_native-v0.63.3-blue?color=%23FF9000"> |
 |<img height="50" src=".github/assets/unform.svg"> | <img alt="unform version" src="https://img.shields.io/badge/unform-v2.1.3-blue?color=%23FF9000"> |
-|<img height="50" src=".github/assets/jest.svg"> | <img alt="jest version" src="https://img.shields.io/badge/jest-v25.1.0-blue?color=%23FF9000"> |
 |<img height="48" src=".github/assets/react_navigation.svg"> | <img alt="react_navigation version" src="https://img.shields.io/badge/react_navigation-v5.7.1-blue?color=%23FF9000"> |
 |<img height="50" src=".github/assets/styled_components.png"> | <img alt="styled_components version" src="https://img.shields.io/badge/styled_components-v5.1.1-blue?color=%23FF9000"> |
+|<img height="50" src=".github/assets/jest.svg"> | <img alt="jest version" src="https://img.shields.io/badge/jest-v25.1.0-blue?color=%23FF9000"> |
 |<img height="50" src=".github/assets/typescript.svg"> | <img alt="typescript version" src="https://img.shields.io/badge/typescript-v3.8.3-blue?color=%23FF9000"> |
 |<img height="50" src=".github/assets/eslint.svg"> | <img alt="eslint version" src="https://img.shields.io/badge/eslint-v6.8.0-blue?color=%23FF9000"> |
 |<img height="50" src=".github/assets/prettier.svg"> | <img alt="prettier version" src="https://img.shields.io/badge/prettier-v2.0.5-blue?color=%23FF9000"> |
