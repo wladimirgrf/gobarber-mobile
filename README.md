@@ -42,7 +42,7 @@ Set up your development environment: <a href="https://react-native.rocketseat.de
 
 ### Requirements
 
-- Must have the [GoBarber API](https://github.com/wladimirgrf/gobarber-api) running.
+Must have the [GoBarber API](https://github.com/wladimirgrf/gobarber-api) running.
 
 **Clone the project and access the folder**
 
@@ -57,13 +57,13 @@ $ git clone https://github.com/wladimirgrf/gobarber-mobile.git && cd gobarber-mo
 $ yarn
 ```
 
-To emulate with Android
+##### To emulate with Android
 ```bash
 # Make sure the emulator is already started
 $ yarn android
 ```
 
-To emulate with IOS
+##### To emulate with IOS
 ```bash
 # IOS dependencies
 $ cd ios
