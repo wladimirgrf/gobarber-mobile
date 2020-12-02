@@ -54,7 +54,7 @@ $ git clone https://github.com/wladimirgrf/gobarber-mobile.git && cd gobarber-mo
 **Follow the steps below**
 
 ```bash
-# Install the dependencies
+# Project dependencies
 $ yarn
 ```
 
@@ -66,7 +66,7 @@ $ yarn android
 
 - To emulate with IOS
 ```bash
-# Install native IOS dependencies
+# IOS dependencies
 $ cd ios
 $ pod install
 
