@@ -35,6 +35,8 @@ export const UserName = styled.Text`
   font-family: 'RobotoSlab-Medium';
 `;
 
+export const SignOutButton = styled.TouchableOpacity``;
+
 export const ProfileButton = styled.TouchableOpacity``;
 
 export const UserAvatar = styled.Image`

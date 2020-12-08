@@ -12,6 +12,7 @@ import {
   HeaderBlock,
   HeaderTitle,
   UserName,
+  SignOutButton,
   ProfileButton,
   UserAvatar,
   ProvidersList,
@@ -26,7 +27,7 @@ import {
 
 const Dashboard: React.FunctionComponent = () => {
   const { navigate } = useNavigation();
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
 
   const [providers, setProviders] = useState<Provider[]>([]);
 
@@ -51,14 +52,20 @@ const Dashboard: React.FunctionComponent = () => {
     <Container>
       <Header>
         <HeaderBlock>
+          <ProfileButton onPress={navigateToProfile}>
+            <UserAvatar source={{ uri: user.avatarUrl }} />
+          </ProfileButton>
+        </HeaderBlock>
+
+        <HeaderBlock>
           <HeaderTitle>Welcome,</HeaderTitle>
           <UserName>{user.name}</UserName>
         </HeaderBlock>
 
         <HeaderBlock>
-          <ProfileButton onPress={navigateToProfile}>
-            <UserAvatar source={{ uri: user.avatarUrl }} />
-          </ProfileButton>
+          <SignOutButton onPress={signOut}>
+            <Icon name="power" color="#999591" size={23} />
+          </SignOutButton>
         </HeaderBlock>
       </Header>
 
