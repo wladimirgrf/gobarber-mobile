@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <img alt="APP" src=".github/assets/app_mobile.png" width="100%">
+  <img alt="APP" src=".github/assets/app_mobile.png">
 </p>
 
 ## 🌍 Ecosystem
