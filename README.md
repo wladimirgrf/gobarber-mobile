@@ -20,6 +20,10 @@
   <img alt="GitHub" src="https://img.shields.io/github/license/wladimirgrf/gobarber-mobile?color=%23FF9000">
 </p>
 
+<p align="center">
+  <img alt="APP" src=".github/assets/app_mobile.png" width="100%">
+</p>
+
 ## 🌍 Ecosystem
 
 Below the technologies, used to build this Mobile App:
