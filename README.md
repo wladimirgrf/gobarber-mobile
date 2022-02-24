@@ -104,7 +104,7 @@ $ git commit -m 'feat: New feature'
 $ git push origin new-feature
 ```
 
-After your pull request is merged, you can delete your branch
+After your pull request is merged, you can delete your branch.
 
 ## 📝 License
 
